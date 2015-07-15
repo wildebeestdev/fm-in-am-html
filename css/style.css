@@ -13,10 +13,11 @@ body {
 
 .medium-split-column {
   width: 100%;
-  padding: 5px 30px;
+  padding: 5px 0;
   background-color: #fff; }
 
 .sub-content-section {
+  padding: 0 30px 20px;
   background-color: #fff;
   margin: 0; }
 
@@ -74,13 +75,28 @@ body {
   background: #56e1f6 url("../svgs/fi-social-twitter.svg") no-repeat center;
   background-size: 60%; }
 
+.twitter-color {
+  background: white url("../img/fi-social-twitter-color.svg") no-repeat center;
+  background-size: 60%;
+  border: 3px solid #57e1f6; }
+
 .facebook {
   background: #425f9c url("../svgs/fi-social-facebook.svg") no-repeat center;
   background-size: 60%; }
 
+.facebook-color {
+  background: white url("../img/fi-social-facebook-color.svg") no-repeat center;
+  background-size: 60%;
+  border: 3px solid #3b5998; }
+
 .pinterest {
   background: #ce2029 url("../svgs/fi-social-pinterest.svg") no-repeat center;
   background-size: 60%; }
+
+.pinterest-color {
+  background: white url("../img/fi-social-pinterest-color.svg") no-repeat center;
+  background-size: 60%;
+  border: 3px solid #ce2029; }
 
 .email {
   background: #59c03e url("../svgs/fi-mail.svg") no-repeat center;
@@ -146,9 +162,9 @@ body {
   .header .logo {
     width: 192px;
     height: 70px;
-    background: url("../img/fm-am-logo.svg");
-    background-size: cover;
     display: inline-block; }
+    .header .logo img {
+      width: 100%; }
   .header .play-button {
     position: absolute;
     top: 50%;
@@ -224,28 +240,91 @@ body {
     .main-section ul .active {
       font-weight: 500;
       border-bottom: 4px solid #52dbb3; }
-  .main-section .video-link {
-    height: 240px;
-    padding: 0 22px;
-    border-bottom: 8px solid #a3d39c;
-    border-top: 19px solid #fff; }
-    .main-section .video-link h5 {
-      margin-left: 6px;
-      margin-top: 20px; }
-    .main-section .video-link .time-label {
-      float: right;
-      margin-top: 16px; }
-    .main-section .video-link .play-button {
-      height: 90px;
-      width: 90px; }
-    .main-section .video-link h3 {
-      position: absolute;
-      font-size: 1.3rem; }
-  .main-section .video-link:nth-child(1) {
-    border-top: none; }
 
-/* For medium screens only */
-@media only screen and (min-width: 40.063em) and (max-width: 64em) {
+/* Related Video Section Styles */
+.video-link {
+  height: 240px;
+  padding: 0 22px;
+  border-bottom: 8px solid #a3d39c;
+  border-top: 19px solid #fff; }
+  .video-link h5 {
+    margin-left: 6px;
+    margin-top: 20px; }
+  .video-link .time-label {
+    float: right;
+    margin-top: 16px; }
+  .video-link .play-button {
+    height: 90px;
+    width: 90px; }
+  .video-link h3 {
+    position: absolute;
+    font-size: 1.3rem; }
+
+.video-link:nth-child(1) {
+  border-top: none; }
+
+/* Related Article Section Styles */
+.related-articles {
+  padding: 0 30px; }
+  .related-articles .side-bar-header {
+    margin-bottom: 0; }
+  .related-articles ul li {
+    margin-left: 0; }
+  .related-articles .article {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #EFEDEE;
+    overflow: auto;
+    position: relative; }
+  .related-articles .article-link-img {
+    width: 37%;
+    margin-top: 1px;
+    float: left; }
+  .related-articles .article-details {
+    display: inline-block;
+    margin-left: 10px;
+    width: 60%;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%); }
+  .related-articles .article-title {
+    font-size: 1.1rem;
+    margin: 0; }
+  .related-articles .company-name {
+    font-size: 1em;
+    margin-top: 0;
+    margin-bottom: 0; }
+  .related-articles p {
+    font-size: .8rem;
+    margin-top: 0; }
+
+/* For mobile view's hero description block */
+.small-view-hero-description {
+  padding: 20px 30px;
+  background-color: #fafdfc; }
+  .small-view-hero-description p {
+    margin-top: 0;
+    font-size: 1rem;
+    margin-bottom: 18px; }
+  .small-view-hero-description .social {
+    text-align: center; }
+  .small-view-hero-description .social-logo-circle {
+    height: 65px;
+    width: 65px;
+    margin-left: 20px;
+    margin-right: 20px; }
+
+/* For smaller tablet views only (extra breakpoint) */
+@media only screen and (min-width: 769px) and (max-width: 56em) {
+  .main-section .sub-content-section .video-link h3 {
+    font-size: .95em;
+    margin: 10px 8px 2px 0; }
+
+  .related-articles .article-details {
+    width: 58%; } }
+
+/* For tablet views only */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
   .header .header-bar {
     background-color: #a0a0a0;
     margin: 0; }
@@ -257,10 +336,12 @@ body {
 
   .main-section {
     padding-right: 0;
-    padding-left: 0; } }
+    padding-left: 0; }
+    .main-section .sub-content-section ul li {
+      margin-left: 0; } }
 
-/* For medium screens and larger */
-@media only screen and (min-width: 40.063em) {
+/* For tablet views and larger */
+@media only screen and (min-width: 769px) {
   .main-section {
     width: 98%;
     float: left;
@@ -276,19 +357,17 @@ body {
     box-sizing: border-box; }
 
   .medium-split-column:nth-child(2) {
-    padding-left: 30px;
     padding-right: 7px; }
 
   .medium-split-column:last-child {
-    padding-right: 30px;
     padding-left: 7px; }
 
   .article-link-img {
-    height: 80px;
     width: 100px;
-    background-image: url("../img/fake-article-link-img.jpg");
-    background-size: cover;
-    display: inline-block; }
+    display: inline-block;
+    margin-right: 1%; }
+    .article-link-img img {
+      width: 100%; }
 
   .sub-content-section ul {
     text-align: left; }
@@ -299,7 +378,18 @@ body {
     padding: 0 16px; }
     .sub-content-section .video-link h3 {
       font-size: 1.1em;
-      margin: 10px 5px 10px 0; }
+      margin: 10px 5px 5px 0; }
+
+  .related-articles .article {
+    position: static; }
+  .related-articles .article-details {
+    position: static;
+    top: initial;
+    transform: initial; }
+  .related-articles .article-title {
+    font-size: 1rem; }
+  .related-articles .company-name {
+    font-size: .9em; }
 
   .sidebar .square-ad {
     background: url("../img/reeses-ad.jpg");
@@ -316,6 +406,8 @@ body {
       margin-left: 0; }
   .sidebar .up-next-section .side-bar-header {
     margin-bottom: 6px; }
+  .sidebar .up-next-section .video-link h3 {
+    bottom: 6%; }
   .sidebar .article-links-section .side-bar-header {
     margin-bottom: 0; }
   .sidebar .article-links-section .article-link-wrapper {
@@ -335,11 +427,11 @@ body {
       margin-top: 0;
       color: #9c9c9c; } }
 
-/* For large screens */
-@media only screen and (min-width: 64.0625em) {
+/* For desktop views */
+@media only screen and (min-width: 1025px) {
   .header {
     text-align: center;
-    padding-top: 20px;
+    padding-top: 23px;
     padding-bottom: 20px;
     height: 221px; }
     .header .header-ad-space {
@@ -348,14 +440,19 @@ body {
       background-color: #CCC9CC;
       margin: 0 auto; }
     .header .logo {
-      font-size: 4rem;
-      display: inline-block; }
+      width: 10%;
+      min-width: 110px;
+      position: relative;
+      top: -4px;
+      margin-right: 0; }
+      .header .logo img {
+        width: 100%;
+        margin-top: 0; }
     .header .nav-bar {
       display: inline-block;
-      margin-left: 0;
+      margin-top: 10px;
       position: relative;
-      top: -20px;
-      padding-left: 30px; }
+      padding-left: 2%; }
       .header .nav-bar li {
         font-size: 1.1rem;
         display: inline-block;
@@ -366,9 +463,9 @@ body {
       display: none; }
 
   .large-player {
-    height: 480px;
-    background-color: #939393;
     position: relative; }
+    .large-player img {
+      width: 100%; }
     .large-player .play-button {
       position: absolute;
       top: 50%;
@@ -391,6 +488,8 @@ body {
       top: 17%;
       right: 3%;
       text-align: right; }
+    .large-player-details .category-label {
+      margin: 15px 0; }
     .large-player-details .social-logo-circle {
       height: 40px;
       width: 40px;
@@ -422,34 +521,52 @@ body {
       width: 110px; }
     .main-section .video-link h3 {
       font-size: 1.1rem;
-      bottom: 2%; }
-  .main-section .related-articles {
-    padding: 0 30px; }
-    .main-section .related-articles li {
-      margin-left: 0; }
-    .main-section .related-articles .article {
-      padding-top: 10px;
-      border-bottom: 1px solid #EFEDEE; }
-    .main-section .related-articles .article-link-img {
-      height: 150px;
-      width: 23%;
-      float: left;
-      margin-top: 7px; }
-    .main-section .related-articles .article-details {
-      display: inline-block;
-      margin-left: 10px;
-      width: 74%; }
-    .main-section .related-articles .article-title {
-      font-size: 1.5rem;
-      margin: 0; }
-    .main-section .related-articles .company-name {
-      margin-top: 0;
-      margin-bottom: 0; }
-    .main-section .related-articles p {
-      font-size: .95rem; }
+      bottom: 3%; }
 
   .side-bar-header {
-    font-size: 1.5rem; } }
+    font-size: 1.5rem; }
+
+  .related-articles .article {
+    padding-bottom: 4px; }
+  .related-articles .article-title {
+    font-size: 1.5rem; }
+  .related-articles .company-name {
+    font-size: initial; }
+  .related-articles .article-link-img {
+    width: 23%; }
+  .related-articles .article-details {
+    display: inline-block; }
+  .related-articles p {
+    font-size: .95rem; } }
+
+/* Media queries for hiding elements */
+@media screen and (min-width: 769px) {
+  .show-for-small-only {
+    display: none !important; } }
+
+@media screen and (max-width: 768px) {
+  .show-for-medium-only {
+    display: none !important; } }
+
+@media screen and (min-width: 1025px) {
+  .show-for-medium-only {
+    display: none !important; } }
+
+@media screen and (max-width: 768px) {
+  .show-for-medium-up {
+    display: none !important; } }
+
+@media screen and (max-width: 1024px) {
+  .show-for-large-up {
+    display: none !important; } }
+
+@media screen and (max-width: 768px) {
+  .hide-for-small-only {
+    display: none !important; } }
+
+@media screen and (min-width: 1025px) {
+  .hide-for-large-up {
+    display: none !important; } }
 
 /* For development purposes */
 .temp-hide {
