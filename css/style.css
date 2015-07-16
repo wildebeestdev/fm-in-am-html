@@ -1,5 +1,13 @@
 /* Configuration */
 /* Page Styles */
+* {
+  margin: 0;
+  padding: 0; }
+
+html,
+body {
+  height: 100%; }
+
 body {
   background-color: #efedee;
   font-size: 14px;
@@ -7,7 +15,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+.page-wrapper {
+  min-height: 100%; }
+
 .container {
+  height: 100%;
+  overflow: auto;
+  padding-bottom: 80px;
   margin: 0 auto;
   max-width: 1210px; }
 
@@ -19,7 +33,8 @@ body {
 .sub-content-section {
   padding: 0 30px 20px;
   background-color: #fff;
-  margin: 0; }
+  margin: 0;
+  z-index: -1; }
 
 .read-more {
   font-weight: 700;
@@ -55,15 +70,6 @@ body {
   font-weight: 300;
   font-size: 1rem; }
 
-.company-logo {
-  height: 32px;
-  width: 32px;
-  background-image: url("../img/fake-company-logo.svg");
-  background-size: cover;
-  display: inline-block;
-  position: relative;
-  top: 9px; }
-
 .social-logo-circle {
   height: 50px;
   width: 50px;
@@ -71,31 +77,43 @@ body {
   background-color: red;
   display: inline-block; }
 
-.twitter {
+.twitter, .twitter-color-ring {
   background: #56e1f6 url("../svgs/fi-social-twitter.svg") no-repeat center;
   background-size: 60%; }
 
 .twitter-color {
-  background: white url("../img/fi-social-twitter-color.svg") no-repeat center;
+  background: url("../img/fi-social-twitter-color.svg") no-repeat center;
   background-size: 60%;
   border: 3px solid #57e1f6; }
 
-.facebook {
+.twitter-color-ring {
+  background-color: transparent;
+  border: 3px solid #57e1f6; }
+
+.facebook, .facebook-color-ring {
   background: #425f9c url("../svgs/fi-social-facebook.svg") no-repeat center;
   background-size: 60%; }
 
 .facebook-color {
-  background: white url("../img/fi-social-facebook-color.svg") no-repeat center;
+  background: url("../img/fi-social-facebook-color.svg") no-repeat center;
   background-size: 60%;
   border: 3px solid #3b5998; }
 
-.pinterest {
+.facebook-color-ring {
+  background-color: transparent;
+  border: 3px solid #3b5998; }
+
+.pinterest, .pinterest-color-ring {
   background: #ce2029 url("../svgs/fi-social-pinterest.svg") no-repeat center;
   background-size: 60%; }
 
 .pinterest-color {
-  background: white url("../img/fi-social-pinterest-color.svg") no-repeat center;
+  background: url("../img/fi-social-pinterest-color.svg") no-repeat center;
   background-size: 60%;
+  border: 3px solid #ce2029; }
+
+.pinterest-color-ring {
+  background-color: transparent;
   border: 3px solid #ce2029; }
 
 .email {
@@ -118,6 +136,24 @@ body {
 /* Category Colors */
 .fitness {
   border-color: #52dbb3; }
+
+.design {
+  border-color: #f0ef95; }
+
+.beauty {
+  border-color: #667e7e; }
+
+.food {
+  border-color: #ec2949; }
+
+.parenting {
+  border-color: #68cb92; }
+
+.leisure {
+  border-color: #eb71aa; }
+
+.fashion {
+  border-color: #70c6d3; }
 
 /* Styles for small video previews */
 .video-link {
@@ -158,7 +194,10 @@ body {
   color: white; }
   .header .header-bar {
     padding: 18px;
-    position: relative; }
+    position: relative;
+    background-color: #afafaf;
+    width: 100%;
+    z-index: 3; }
   .header .logo {
     width: 192px;
     height: 70px;
@@ -171,8 +210,6 @@ body {
     left: 50%;
     transform: translate(-50%, -50%); }
   .header .menu-icon {
-    background-image: url("../svgs/fi-list.svg");
-    background-size: cover;
     height: 40px;
     width: 40px;
     display: inline-block;
@@ -204,12 +241,51 @@ body {
       float: right;
       margin-right: 20px; }
 
+/* Mobile Navbar Styles */
+.mobile-nav {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  transition: all .6s;
+  color: white;
+  visibility: hidden; }
+  .mobile-nav h4 {
+    font-style: italic;
+    margin: 40px 30px; }
+  .mobile-nav ul {
+    list-style-type: none;
+    padding-left: 0; }
+  .mobile-nav li {
+    font-size: 1.6rem;
+    border-left-style: solid;
+    border-left-width: 10px;
+    margin-bottom: 3px;
+    padding-left: 26px;
+    padding-top: 12px;
+    padding-bottom: 12px; }
+  .mobile-nav .social {
+    text-align: center;
+    margin-top: 50px; }
+  .mobile-nav .social-logo-circle {
+    margin-left: 20px;
+    margin-right: 20px; }
+
+.menu-icon {
+  position: relative;
+  z-index: 999; }
+
 /* Sidebar styles */
 .sidebar {
   width: 300px;
   float: left;
   margin-right: 1%;
   padding-top: 12px; }
+  .sidebar .video-link {
+    height: 210px; }
 
 .side-bar-header {
   font-size: 1.2rem;
@@ -219,6 +295,21 @@ body {
 .side-bar-section {
   background-color: white;
   padding: 0 13px; }
+
+/* Footer styles */
+.footer {
+  position: relative;
+  margin-top: -80px;
+  height: 80px;
+  clear: both;
+  background-color: #595758;
+  color: white;
+  text-align: center; }
+  .footer .footer-text-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
 
 /* Main Section Styles */
 .main-section {
@@ -406,8 +497,11 @@ body {
       margin-left: 0; }
   .sidebar .up-next-section .side-bar-header {
     margin-bottom: 6px; }
-  .sidebar .up-next-section .video-link h3 {
-    bottom: 6%; }
+  .sidebar .up-next-section .video-link {
+    padding: 0 15px; }
+    .sidebar .up-next-section .video-link h3 {
+      bottom: 6%;
+      font-size: 1rem; }
   .sidebar .article-links-section .side-bar-header {
     margin-bottom: 0; }
   .sidebar .article-links-section .article-link-wrapper {
@@ -425,15 +519,27 @@ body {
     .sidebar .article-links-section .article-link-wrapper p {
       display: inline-block;
       margin-top: 0;
-      color: #9c9c9c; } }
+      color: #9c9c9c; }
+
+  .footer .footer-text-wrapper {
+    position: relative; }
+  .footer p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .footer .privacy-policy {
+    left: 85%; } }
 
 /* For desktop views */
 @media only screen and (min-width: 1025px) {
   .header {
     text-align: center;
     padding-top: 23px;
-    padding-bottom: 20px;
-    height: 221px; }
+    height: 208px; }
+    .header .header-bar {
+      padding-top: 20px;
+      padding-bottom: 0; }
     .header .header-ad-space {
       width: 760px;
       height: 90px;
@@ -456,7 +562,8 @@ body {
       .header .nav-bar li {
         font-size: 1.1rem;
         display: inline-block;
-        border-left: 5px solid black;
+        border-left-style: solid;
+        border-left-width: 5px;
         padding: 4px 0 4px 10px;
         margin-right: 16px; }
     .header .play-button {
@@ -504,7 +611,6 @@ body {
       margin-top: 0;
       margin-bottom: 0;
       font-size: 1.7rem; }
-    .large-player-details .company-logo,
     .large-player-details .company-name {
       margin-left: 7px;
       margin-top: 8px; }
@@ -521,7 +627,8 @@ body {
       width: 110px; }
     .main-section .video-link h3 {
       font-size: 1.1rem;
-      bottom: 3%; }
+      bottom: 3%;
+      margin-right: 13px; }
 
   .side-bar-header {
     font-size: 1.5rem; }

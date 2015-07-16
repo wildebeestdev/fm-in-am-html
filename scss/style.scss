@@ -5,7 +5,26 @@ $side-padding-main-section: 30px;
 $sub-header-large: 1.5rem;
 $sub-header-medium: 1.2rem;
 
+$design: #f0ef95;
+$fashion: #70c6d3;
+$beauty: #667e7e;
+$food: #ec2949;
+$parenting: #68cb92;
+$leisure: #eb71aa;
+$fitness: #52dbb3;
+
+
 /* Page Styles */
+* {
+    margin:0;
+    padding:0;
+}
+
+html, 
+body {
+    height: 100%;
+}
+
 body {
     background-color: #efedee;
     font-size: 14px;
@@ -14,7 +33,14 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.page-wrapper {
+    min-height: 100%;
+}
+
 .container {
+    height: 100%;
+    overflow: auto;
+    padding-bottom: 80px;
     margin: 0 auto;
     max-width: 1210px;
 }
@@ -29,12 +55,14 @@ body {
     padding: 0 $side-padding-main-section 20px;
     background-color: #fff;
     margin: 0;
+    z-index: -1;
 }
 
 .read-more {
     font-weight: 700;
     text-decoration: underline;
 }
+
 
 /* Asset Styles */
 .category-label {
@@ -71,16 +99,6 @@ body {
     font-size: 1rem;
 }
 
-.company-logo {
-    height: 32px;
-    width: 32px;
-    background-image: url('../img/fake-company-logo.svg');
-    background-size: cover;
-    display: inline-block;
-    position: relative;
-    top: 9px;
-}
-
 .social-logo-circle {
     height: 50px;
     width: 50px;
@@ -95,8 +113,14 @@ body {
 }
 
 .twitter-color {
-    background: #fff url('../img/fi-social-twitter-color.svg') no-repeat center;
+    background: url('../img/fi-social-twitter-color.svg') no-repeat center;
     background-size: 60%;
+    border: 3px solid #57e1f6;
+}
+
+.twitter-color-ring {
+    @extend .twitter;
+    background-color: transparent;
     border: 3px solid #57e1f6;
 }
 
@@ -106,8 +130,14 @@ body {
 }
 
 .facebook-color {
-    background: #fff url('../img/fi-social-facebook-color.svg') no-repeat center;
+    background: url('../img/fi-social-facebook-color.svg') no-repeat center;
     background-size: 60%;
+    border: 3px solid #3b5998;
+}
+
+.facebook-color-ring {
+    @extend .facebook;
+    background-color: transparent;
     border: 3px solid #3b5998;
 }
 
@@ -117,8 +147,14 @@ body {
 }
 
 .pinterest-color {
-    background: #fff url('../img/fi-social-pinterest-color.svg') no-repeat center;
+    background: url('../img/fi-social-pinterest-color.svg') no-repeat center;
     background-size: 60%;
+    border: 3px solid #ce2029;
+}
+
+.pinterest-color-ring {
+    @extend .pinterest;
+    background-color: transparent;
     border: 3px solid #ce2029;
 }
 
@@ -143,10 +179,36 @@ body {
     }
 }
 
+
 /* Category Colors */
 .fitness {
-    border-color: #52dbb3;
+    border-color: $fitness;
 }
+
+.design {
+    border-color: $design;
+}
+
+.beauty {
+    border-color: $beauty;
+}
+
+.food {
+    border-color: $food;
+}
+
+.parenting {
+    border-color: $parenting;
+}
+
+.leisure {
+    border-color: $leisure;
+}
+
+.fashion {
+    border-color: $fashion;
+}
+
 
 /* Styles for small video previews */
 .video-link {
@@ -186,8 +248,8 @@ body {
         font-size: 1rem;
         line-height: 1.1;
     }
-
 }
+
 
 /* Header Styles */
 .header {
@@ -199,6 +261,9 @@ body {
     .header-bar {
         padding: 18px;
         position: relative;
+        background-color: #afafaf;
+        width: 100%;
+        z-index: 3;
     }
 
     .logo {
@@ -219,8 +284,6 @@ body {
     }
 
     .menu-icon {
-        background-image: url('../svgs/fi-list.svg');
-        background-size: cover;
         height: 40px;
         width: 40px;
         display: inline-block;
@@ -266,8 +329,58 @@ body {
             margin-right: 20px;
         }
     }
-
 }
+
+/* Mobile Navbar Styles */
+.mobile-nav {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.9);
+    // padding: 24px 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 5;
+    transition: all .6s;
+    color: white;
+    visibility: hidden;
+
+    h4 {
+        font-style: italic;
+        margin: 40px 30px;
+    }
+
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    li {
+        font-size: 1.6rem;
+        border-left-style: solid;
+        border-left-width: 10px;
+        margin-bottom: 3px;
+        padding-left: 26px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+    .social {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .social-logo-circle {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+.menu-icon {
+    position: relative;
+    z-index: 999;
+}
+
 
 /* Sidebar styles */
 .sidebar {
@@ -275,6 +388,10 @@ body {
     float: left;
     margin-right: 1%;
     padding-top: 12px;
+
+    .video-link {
+        height: 210px;
+    }
 }
 
 .side-bar-header {
@@ -287,6 +404,25 @@ body {
     background-color: white;
     padding: 0 13px;
 }
+
+/* Footer styles */
+.footer {
+    position: relative;
+    margin-top: -80px; 
+    height: 80px;
+    clear: both;
+    background-color: #595758;
+    color: white;
+    text-align: center;
+
+    .footer-text-wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+} 
+
 
 /* Main Section Styles */
 .main-section {
@@ -317,6 +453,7 @@ body {
         }
     }
 }
+
 
 /* Related Video Section Styles */
 .video-link {
@@ -349,6 +486,7 @@ body {
 .video-link:nth-child(1) {
     border-top: none;
 }
+
 
 /* Related Article Section Styles */
 .related-articles {
@@ -404,6 +542,7 @@ body {
     }
 }
 
+
 /* For mobile view's hero description block */
 .small-view-hero-description {
     padding: 20px 30px;
@@ -427,9 +566,9 @@ body {
     }
 }
 
+
 /* For smaller tablet views only (extra breakpoint) */
 @media only screen and (min-width: 769px) and (max-width: 56em) { 
- 
     .main-section {
         .sub-content-section {
             .video-link {
@@ -481,6 +620,7 @@ body {
         }
     }
 } 
+
 
 /* For tablet views and larger */
 @media only screen and (min-width: 769px) { 
@@ -541,7 +681,6 @@ body {
     }
 
     .related-articles {
-
         .article {
             position: static;
         }
@@ -589,8 +728,10 @@ body {
                 margin-bottom: 6px;
             }
             .video-link {
+                padding: 0 15px;
                 h3 {
                     bottom: 6%;
+                    font-size: 1rem;
                 }
             }
         }
@@ -624,15 +765,36 @@ body {
             }
         }
     }
+    .footer {
+        .footer-text-wrapper {
+            position: relative;
+        }
+
+        p {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); 
+        }
+
+        .privacy-policy {
+            left: 85%;
+        }
+    }
 } 
+
 
 /* For desktop views */
 @media only screen and (min-width: 1025px) {
     .header {
         text-align: center;
         padding-top: 23px;
-        padding-bottom: 20px;
-        height: 221px;
+        height: 208px;
+
+        .header-bar {
+            padding-top: 20px;
+            padding-bottom: 0;
+        }
 
         .header-ad-space {
             width: 760px;
@@ -663,7 +825,8 @@ body {
             li {
                 font-size: 1.1rem;
                 display: inline-block;
-                border-left: 5px solid black;
+                border-left-style: solid;
+                border-left-width: 5px;
                 padding: 4px 0 4px 10px;
                 margin-right: 16px;
             }
@@ -735,7 +898,6 @@ body {
             font-size: 1.7rem;
         }
 
-        .company-logo,
         .company-name {
             margin-left: 7px;
             margin-top: 8px;
@@ -764,6 +926,7 @@ body {
             h3 {
                 font-size: 1.1rem;
                 bottom: 3%;
+                margin-right: 13px;
             }
         }
     }
@@ -798,10 +961,12 @@ body {
     }
  }
  
+
  /* Media queries for hiding elements */
 @media screen and (min-width: 769px) {
     .show-for-small-only {
         display: none !important;
+
     } 
 }
 
@@ -812,7 +977,7 @@ body {
 }
 
 @media screen and (min-width: 1025px) {
-            .show-for-medium-only {
+    .show-for-medium-only {
         display: none !important;
     }
 }
@@ -840,6 +1005,7 @@ body {
     display: none !important;
     }
 }
+
 
  /* For development purposes */
 .temp-hide {
